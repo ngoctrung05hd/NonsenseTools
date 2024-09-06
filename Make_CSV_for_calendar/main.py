@@ -43,11 +43,11 @@ def Out(data):
         if '-' in week:
             week = week.split("-")
             for date in range((int)(week[0]), (int)(week[1]) + 1):
-                date = (str)((FIRST + timedelta(weeks=date) + timedelta(days = ((int)(data[DAY]) - 2))).strftime('%m/%d/%Y'))
+                date = (str)((FIRST + timedelta(weeks=(date-1)) + timedelta(days = ((int)(data[DAY]) - 2))).strftime('%m/%d/%Y'))
                 result = data[SUB] + "," + date + "," + start + "," + date + "," + stop + "," + "FALSE" + "," + "," + data[LOC] + "\n"
                 OUT.write(result)
         else:
-            date = (str)((FIRST + timedelta(weeks=(int)(week)) + + timedelta((int)(data[DAY]) - 2)).strftime('%m/%d/%Y'))
+            date = (str)((FIRST + timedelta(weeks=((int)(week)-1)) + + timedelta((int)(data[DAY]) - 2)).strftime('%m/%d/%Y'))
             result = data[SUB] + "," + date + "," + start + "," + date + "," + stop + "," + "FALSE" + "," + "," + data[LOC] + "\n"
             OUT.write(result)
 
